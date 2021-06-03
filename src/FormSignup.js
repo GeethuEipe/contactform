@@ -10,6 +10,7 @@ const FormSignup = ({ submitForm }) => {
   });
   const [errors, setErrors] = useState({});
   const [dataIsCorrect, setDataIsCorrect] = useState(false);
+  const [display, setDisplay] = useState('');
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -20,6 +21,7 @@ const FormSignup = ({ submitForm }) => {
     event.preventDefault();
     setErrors(Validation(values));
     setDataIsCorrect(true);
+    setDisplay(values);
   };
 
   useEffect(() => {
@@ -85,19 +87,15 @@ const FormSignup = ({ submitForm }) => {
               SignUp
             </button>
           </div>
+          <div>
+            {display.fullname && <p className="value">{display.fullname}</p>}
+            {display.email && <p className="value">{display.email}</p>}
+            {display.password && <p className="value">{display.password}</p>}
+          </div>
         </form>
       </div>
     </div>
   );
 };
 
-const FormSuccess = () => {
-  return (
-    <div className="container">
-      <div className="app-wrapper">
-        <h1 className="form-success">Submit Successfully</h1>
-      </div>
-    </div>
-  );
-};
 export default FormSignup;

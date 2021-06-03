@@ -47,6 +47,9 @@
 .error {
   color: red;
 }
+.value {
+  color: white;
+}
 .submit {
   display: flex;
   text-transform: uppercase;
